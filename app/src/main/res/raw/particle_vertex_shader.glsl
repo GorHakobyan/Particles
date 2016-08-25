@@ -30,10 +30,18 @@ void main()
 //    created and send that on to the fragment shader as well
     v_ElapsedTime = u_Time - a_ParticleStartTime;
 
+//    This will calculate an accelerating gravity factor by applying the gravitational
+//      acceleration formula and squaring the elapsed time; we also divide things by
+//      8 to dampen the effect. The number 8 is arbitrary: we could use any other
+//      number that also makes things look good on the screen.
+    float gravityFactor = v_ElapsedTime * v_ElapsedTime / 8.0;
+
 //    To calculate the current position of the particle, we multiply the direction vector with the
 //    elapsed time and add that to the position. The more time elapses, the further
 //    the particle will go.
     vec3 currentPosition = a_Position + (a_DirectionVector * v_ElapsedTime);
+
+    currentPosition.y -= gravityFactor;
 
 //    Project the particle with the matrix
     gl_Position = u_Matrix * vec4(currentPosition, 1.0);
