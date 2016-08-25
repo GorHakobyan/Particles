@@ -53,6 +53,9 @@ public class ParticlesRenderer implements Renderer
 
         final Geometry.Vector particleDirection = new Geometry.Vector(0f, 0.5f, 0f);
 
+        final float angleVarianceInDegrees = 5f;
+        final float speedVariance = 1f;
+
 
 //        The next part of the method sets up our three particle fountains. Each fountain
 //        is represented by a particle shooter, and each shooter will shoot its particles
@@ -63,17 +66,23 @@ public class ParticlesRenderer implements Renderer
         redParticleShooter = new ParticleShooter(
                 new Geometry.Point(-1f, 0f, 0f),
                 particleDirection,
-                Color.rgb(255, 50, 5));
+                Color.rgb(255, 50, 5),
+                angleVarianceInDegrees,
+                speedVariance);
 
         greenParticleShooter = new ParticleShooter(
                 new Geometry.Point(0f, 0f, 0f),
                 particleDirection,
-                Color.rgb(25, 255, 25));
+                Color.rgb(25, 255, 25),
+                angleVarianceInDegrees,
+                speedVariance);
 
         blueParticleShooter = new ParticleShooter(
                 new Geometry.Point(1f, 0f, 0f),
                 particleDirection,
-                Color.rgb(5, 50, 255));
+                Color.rgb(5, 50, 255),
+                angleVarianceInDegrees,
+                speedVariance);
     }
 
     @Override
