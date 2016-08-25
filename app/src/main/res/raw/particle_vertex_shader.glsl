@@ -47,5 +47,5 @@ void main()
     gl_Position = u_Matrix * vec4(currentPosition, 1.0);
 
 //    Since we’re rendering the particle as a point, we set the point size to 10 pixels.
-    gl_PointSize = 10.0;
+    gl_PointSize = 25.0;
 }
