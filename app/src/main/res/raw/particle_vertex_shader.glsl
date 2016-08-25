@@ -1,4 +1,3 @@
-#version 120
 
 //  A uniform for the projection matrix and a uniform for the current time, so that the shader can
 //  figure out how much time has elapsed since each particle was created. We’ll
