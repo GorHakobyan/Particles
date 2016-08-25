@@ -16,8 +16,6 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 
-
-
 public class ParticlesRenderer implements Renderer
 {
 
