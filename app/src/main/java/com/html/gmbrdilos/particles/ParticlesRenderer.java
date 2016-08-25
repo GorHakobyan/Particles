@@ -47,6 +47,31 @@ public class ParticlesRenderer implements Renderer
     {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+//        OpenGL’s default blending equation:
+//        output = (source factor * source fragment) + (destination factor * destination fragment)
+
+//        In OpenGL, blending works by blending the result of the fragment shader
+//        with the color that’s already there in the frame buffer. The value for source
+//        fragment comes from our fragment shader, destination fragment is what’s
+//        already there in the frame buffer, and the values for source factor and destination
+//        factor are configured by calling glBlendFunc(). In the code that we just
+//        added, we called glBlendFunc() with each factor set to GL_ONE, which changes the
+//        blending equation as follows:
+//
+//        output = (GL_ONE * source fragment) + (GL_ONE * destination fragment)
+//
+//        GL_ONE is just a placeholder for 1, and since multiplying anything by 1 results
+//        in the same number, the equation can be simplified as follows:
+//
+//        output = source fragment + destination fragment
+//
+//        With this blending mode, the fragments from our fragment shader will be
+//        added to the fragments already on the screen, and that’s how we get additive
+//        blending.
+
+        GLES20.glEnable(GLES20.GL_BLEND);
+        GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_ONE);
+
         particleProgram = new ParticleShaderProgram(context);
         particleSystem = new ParticleSystem(10000);
         globalStartTime = System.nanoTime();
