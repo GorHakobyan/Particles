@@ -11,6 +11,7 @@ public class ParticleShaderProgram extends ShaderProgram
 //   Uniform locations
     private final int uMatrixLocation;
     private final int uTimeLocation;
+    private final int uTextureUnitLocation;
 
 //   Attribute locations
     private final int aPositionLocation;
@@ -25,6 +26,7 @@ public class ParticleShaderProgram extends ShaderProgram
 //       Retrieve uniform locations for the shader program.
         uMatrixLocation = GLES20.glGetUniformLocation(program, U_MATRIX);
         uTimeLocation = GLES20.glGetUniformLocation(program, U_TIME);
+        uTextureUnitLocation = GLES20.glGetUniformLocation(program, U_TEXTURE_UNIT);
 
 //       Retrieve attribute locations for the shader program.
         aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
@@ -33,10 +35,14 @@ public class ParticleShaderProgram extends ShaderProgram
         aParticleStartTimeLocation = GLES20.glGetAttribLocation(program, A_PARTICLE_START_TIME);
     }
 
-    public void setUniforms(float[] matrix, float elapsedTime)
+    public void setUniforms(float[] matrix, float elapsedTime, int textureId)
     {
         GLES20.glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0);
         GLES20.glUniform1f(uTimeLocation, elapsedTime);
+
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
+        GLES20.glUniform1i(uTextureUnitLocation, 0);
     }
 
     public int getPositionAttributeLocation()

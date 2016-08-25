@@ -25,9 +25,6 @@ public class TextureHelper
      * Loads a texture from a resource ID, returning the OpenGL ID for that
      * texture. Returns 0 if the load failed.
      *
-     * @param context
-     * @param resourceId
-     * @return
      */
     public static int loadTexture(Context context, int resourceId)
     {
@@ -72,8 +69,11 @@ public class TextureHelper
         glTexParameteri(GL_TEXTURE_2D,
                 GL_TEXTURE_MIN_FILTER,
                 GL_LINEAR_MIPMAP_LINEAR);
+
         glTexParameteri(GL_TEXTURE_2D,
-                GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                GL_TEXTURE_MAG_FILTER,
+                GL_LINEAR);
+
         // Load the bitmap into the bound texture.
         texImage2D(GL_TEXTURE_2D, 0, bitmap, 0);
 

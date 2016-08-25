@@ -11,6 +11,7 @@ import com.html.gmbrdilos.particles.objects.ParticleSystem;
 import com.html.gmbrdilos.particles.programs.ParticleShaderProgram;
 import com.html.gmbrdilos.particles.util.Geometry;
 import com.html.gmbrdilos.particles.util.MatrixHelper;
+import com.html.gmbrdilos.particles.util.TextureHelper;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -34,6 +35,8 @@ public class ParticlesRenderer implements Renderer
     private ParticleShooter greenParticleShooter;
     private ParticleShooter blueParticleShooter;
     private long globalStartTime;
+
+    private int texture;
 
     public ParticlesRenderer(Context context)
     {
@@ -106,6 +109,8 @@ public class ParticlesRenderer implements Renderer
                 Color.rgb(5, 50, 255),
                 angleVarianceInDegrees,
                 speedVariance);
+
+        texture = TextureHelper.loadTexture(context, R.drawable.particle_texture);
     }
 
     @Override
@@ -132,7 +137,7 @@ public class ParticlesRenderer implements Renderer
         blueParticleShooter.addParticles(particleSystem, currentTime, 5);
 
         particleProgram.useProgram();
-        particleProgram.setUniforms(viewProjectionMatrix, currentTime);
+        particleProgram.setUniforms(viewProjectionMatrix, currentTime, texture);
         particleSystem.bindData(particleProgram);
         particleSystem.draw();
     }
