@@ -50,7 +50,7 @@ public class ParticlesRenderer implements Renderer
 
 //        OpenGL’s default blending equation:
 //        output = (source factor * source fragment) + (destination factor * destination fragment)
-
+//
 //        In OpenGL, blending works by blending the result of the fragment shader
 //        with the color that’s already there in the frame buffer. The value for source
 //        fragment comes from our fragment shader, destination fragment is what’s

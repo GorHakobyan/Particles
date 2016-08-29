@@ -12,6 +12,9 @@ attribute vec3 a_Color;
 attribute vec3 a_DirectionVector;
 attribute float a_ParticleStartTime;
 
+//  We’ll need to use the color and the elapsed time in the fragment shader as well, so
+//  we’ve also created two varyings for these two variables
+
 varying vec3 v_Color;
 varying float v_ElapsedTime;
 

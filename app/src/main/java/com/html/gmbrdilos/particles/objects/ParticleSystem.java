@@ -77,6 +77,7 @@ public class ParticleSystem
 
         particles[currentOffset++] = particleStartTime;
 
+//        Copy the new particle over to our native buffer so that OpenGL can access the new data.
 //        We want to copy over only the new data so that we don’t waste time copying
 //        over data that hasn’t changed, so we pass in the start offset for the new particle
 //        and the count

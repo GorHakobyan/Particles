@@ -1,6 +1,5 @@
 package com.html.gmbrdilos.particles.programs;
 
-
 import android.content.Context;
 import android.opengl.GLES20;
 
@@ -21,6 +20,7 @@ public class ParticleShaderProgram extends ShaderProgram
 
     public ParticleShaderProgram(Context context)
     {
+//       Call to ShaderProgram constructor
         super(context, R.raw.particle_vertex_shader, R.raw.particle_fragment_shader);
 
 //       Retrieve uniform locations for the shader program.
@@ -37,7 +37,9 @@ public class ParticleShaderProgram extends ShaderProgram
 
     public void setUniforms(float[] matrix, float elapsedTime, int textureId)
     {
+//        glUniformMatrix4fv(int location, int count, boolean transpose, float[] value, int offset)
         GLES20.glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0);
+//        glUniform1f(int location, float x)
         GLES20.glUniform1f(uTimeLocation, elapsedTime);
 
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);

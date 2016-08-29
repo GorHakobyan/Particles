@@ -8,7 +8,7 @@ uniform sampler2D u_TextureUnit;
 
 void main()
 {
-//       For making square patricles appear circle
+////    For making square patricles appear circle
 ////    Draw particles as circles (Well, each point will be rendered
 ////                                with fragments that range from 0 to 1 on each axis relative to gl_PointCoord,
 ////                                so that places the center of the point at (0.5, 0.5), with 0.5 units of room on
@@ -27,7 +27,7 @@ void main()
 //    else
 //    {
 ////    Brighten up young particles and dim old particles by dividing the color by the elapsed time.
-//    gl_FragColor = vec4(v_Color / v_ElapsedTime, 1.0);
+//        gl_FragColor = vec4(v_Color / v_ElapsedTime, 1.0);
 //    }
 
     gl_FragColor = vec4(v_Color / v_ElapsedTime, 1.0) * texture2D(u_TextureUnit, gl_PointCoord);
